@@ -1,4 +1,17 @@
 package com.tirage.apifreetirage.modele;
 
-public class PostulantTrie {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="postulantTrie")
+@Getter
+@Setter
+@NoArgsConstructor
+public class PostulantTrie{
+    private Long id;
 }
