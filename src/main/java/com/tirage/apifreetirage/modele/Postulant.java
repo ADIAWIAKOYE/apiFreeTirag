@@ -21,4 +21,8 @@ public class Postulant {
     private String numero_postulant;
     //@Email(message = "Wrong e-mail")
     private String email_postulant;
+
+    @ManyToOne
+    @JoinColumn(name = "idlist_id_liste")
+    private Liste idlist;
 }

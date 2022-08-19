@@ -21,4 +21,6 @@ public class Liste {
     private long id_liste;
     private String libelle_liste;
     private Date date_liste;
+
+
 }

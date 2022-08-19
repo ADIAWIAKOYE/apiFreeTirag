@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -20,4 +18,7 @@ public class Tirage {
     private Date date;
     private  String libelle;
 
+    @ManyToOne
+    @JoinColumn(name = "idliste_id_liste")
+    private Liste idliste;
 }
