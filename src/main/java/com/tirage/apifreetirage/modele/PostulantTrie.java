@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -13,5 +14,6 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 public class PostulantTrie{
+    @Id
     private Long id;
 }
