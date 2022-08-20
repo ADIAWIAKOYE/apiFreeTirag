@@ -24,6 +24,7 @@ public class PostulantExcelimport {
         long numero_postulant=0;
         String email_postulant="";
 
+
         String excelFilePath = "C:\\Users\\mkkeita\\Desktop\\projects\\apiFreeTirag\\file1.xlsx";
 
         long start = System.currentTimeMillis();//l'heure de debut
@@ -31,15 +32,20 @@ public class PostulantExcelimport {
         try {
             //FileInputStream inputStrean = new FileInputStream(file.getInputStream());
             Workbook workbook = new XSSFWorkbook(file.getInputStream());
+
             Sheet firstSheet=workbook.getSheetAt(0);
             Iterator<Row> rowIterator=firstSheet.iterator();
+
             rowIterator.next();
 
             while (rowIterator.hasNext()){
+
                 Row nextRow = rowIterator.next();
                 Iterator<Cell> cellIterator=nextRow.cellIterator();
+
                 while (cellIterator.hasNext()){
                     Cell nextCell=cellIterator.next();
+
                     int columnIndex=nextCell.getColumnIndex();
                     switch (columnIndex){
                         case 0:

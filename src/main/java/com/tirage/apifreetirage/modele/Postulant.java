@@ -16,12 +16,12 @@ public class Postulant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_postulant;
+    private long idpostulant;
     private String nom_postulant;
     private String prenom_postulant;
     private long numero_postulant;
     //@Email(message = "Wrong e-mail")
-    private String email_postulant;
+    private String email;
 
     @ManyToOne
     @JoinColumn(name = "idlist_id_liste")
@@ -31,6 +31,6 @@ public class Postulant {
         this.nom_postulant = nom_postulant;
         this.prenom_postulant = prenom_postulant;
         this.numero_postulant = numero_postulant;
-        this.email_postulant = email_postulant;
+        this.email = email_postulant;
     }
 }

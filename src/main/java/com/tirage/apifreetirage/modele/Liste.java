@@ -19,7 +19,7 @@ public class Liste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_liste;
-    private String libelle_liste;
+    private String libelle;
     private Date date_liste;
 
 

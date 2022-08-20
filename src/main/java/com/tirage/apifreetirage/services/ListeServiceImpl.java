@@ -16,4 +16,15 @@ public class ListeServiceImpl implements ListeService {
     public Liste creer(Liste liste) {
         return listeRepo.save(liste);
     }
+
+    @Override
+    public Liste trouverListeParLibelle(String libelle) {
+        return listeRepo.findByLibelle(libelle);
+    }
+
+    @Override
+    public int ajouterIdListe(Long idList) {
+
+        return listeRepo.INSERTIDLIST(idList);
+    }
 }
