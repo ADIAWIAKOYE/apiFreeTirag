@@ -22,4 +22,11 @@ public class PostulantServiceImpl implements PostulantService{
     public List<Postulant> enregistrer(List<Postulant> listPost) {
         return repoPost.saveAll(listPost);
     }
+
+    @Override
+    public List<Object[]> TrouveridPostList(Long idListe) {
+
+        return repoPost.FINDIDPOSTLIST(idListe);
+    }
+
 }

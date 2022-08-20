@@ -33,14 +33,18 @@ public class PostulantController {
         //listeService.ajouterIdListe();
         PostulantExcelimport excelImporter = new PostulantExcelimport();
         List<Postulant> postulantList = excelImporter.excelImport(file);
-        liste.setDate_liste(new Date());
-        Liste l= listeService.creer(liste);
-        //long id_liste = listeService.trouverListeParLibelle(libelle).getId_liste();
+        if(postulantList.size()==0){
+            return "Fichier vide";
+        }else{
+            liste.setDate_liste(new Date());
+            Liste l= listeService.creer(liste);
+            //long id_liste = listeService.trouverListeParLibelle(libelle).getId_liste();
 
-        for (Postulant p:postulantList){
-            p.setIdlist(l);
+            for (Postulant p:postulantList){
+                p.setIdlist(l);
+            }
+            postulantservice.enregistrer(postulantList);
+            return "import succsfully";
         }
-        postulantservice.enregistrer(postulantList);
-        return "import succsfully";
     }
 }

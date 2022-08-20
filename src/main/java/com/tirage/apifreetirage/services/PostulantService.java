@@ -8,4 +8,5 @@ public interface PostulantService {
 
  List<Postulant> enregistrer(List<Postulant> listPost);
 
+ List<Object[]> TrouveridPostList(Long idListe);
 }

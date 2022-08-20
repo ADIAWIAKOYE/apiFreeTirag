@@ -5,6 +5,8 @@ import com.tirage.apifreetirage.repository.ListeRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ListeServiceImpl implements ListeService {
@@ -27,4 +29,6 @@ public class ListeServiceImpl implements ListeService {
 
         return listeRepo.INSERTIDLIST(idList);
     }
+
+
 }

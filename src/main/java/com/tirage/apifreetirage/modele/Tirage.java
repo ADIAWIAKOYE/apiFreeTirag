@@ -14,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Tirage {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date;
 
