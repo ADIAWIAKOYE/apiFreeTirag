@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,16 +27,20 @@ public class PostulantController {
     @Autowired
     private PostulantRepo postrepo;
 */
-    @RequestMapping("/import/excel")
+    @RequestMapping("/import/excel/{libelle}")
     @ResponseBody
-    public String importFormExcel(@Param("file") MultipartFile file, Liste liste) {
-        //listeService.ajouterIdListe(id_liste);
+    public String importFormExcel(@Param("file") MultipartFile file, Liste liste, String libelle) {
+        //listeService.ajouterIdListe();
         PostulantExcelimport excelImporter = new PostulantExcelimport();
         List<Postulant> postulantList = excelImporter.excelImport(file);
-        postulantservice.enregistrer(postulantList);
-        //listeService.creer(liste);
+        liste.setDate_liste(new Date());
+        Liste l= listeService.creer(liste);
         //long id_liste = listeService.trouverListeParLibelle(libelle).getId_liste();
 
+        for (Postulant p:postulantList){
+            p.setIdlist(l);
+        }
+        postulantservice.enregistrer(postulantList);
         return "import succsfully";
     }
 }
