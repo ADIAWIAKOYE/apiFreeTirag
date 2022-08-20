@@ -22,11 +22,11 @@ public class Postulant {
     private long numero_postulant;
     //@Email(message = "Wrong e-mail")
     private String email_postulant;
-/*
+
     @ManyToOne
     @JoinColumn(name = "idlist_id_liste")
     private Liste idlist;
-*/
+
     public Postulant(String nom_postulant, String prenom_postulant, long numero_postulant, String email_postulant) {
         this.nom_postulant = nom_postulant;
         this.prenom_postulant = prenom_postulant;

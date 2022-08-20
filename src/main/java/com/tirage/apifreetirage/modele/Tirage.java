@@ -16,11 +16,12 @@ public class Tirage {
     @Id
     private Long id;
     private Date date;
+
     private  String libelle;
-/*
+
     @ManyToOne
     @JoinColumn(name = "idliste_id_liste")
     private Liste idliste;
-    */
+
 
 }

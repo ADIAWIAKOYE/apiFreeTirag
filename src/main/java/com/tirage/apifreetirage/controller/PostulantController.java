@@ -26,7 +26,7 @@ public class PostulantController {
 */
     @RequestMapping("/import/excel")
     @ResponseBody
-    public String importFormExcel(@Param("file") MultipartFile file){
+    public String importFormExcel(@Param("file") MultipartFile file) {
         PostulantExcelimport excelImporter = new PostulantExcelimport();
         List<Postulant> postulantList = excelImporter.excelImport(file);
         postulantservice.enregistrer(postulantList);

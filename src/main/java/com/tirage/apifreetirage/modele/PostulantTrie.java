@@ -16,10 +16,10 @@ import javax.persistence.*;
 public class PostulantTrie{
     @Id
     private Long id;
-/*
+
     @ManyToOne
     @JoinColumn(name = "idtirage_id")
     private Tirage idtirage;
-    */
+
 
 }
