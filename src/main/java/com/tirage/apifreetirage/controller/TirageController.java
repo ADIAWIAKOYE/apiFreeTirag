@@ -10,6 +10,7 @@ import com.tirage.apifreetirage.services.PostulantTrieService;
 import com.tirage.apifreetirage.services.TirageService;
 import lombok.AllArgsConstructor;
 import lombok.val;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,15 +20,16 @@ import java.util.List;
 @AllArgsConstructor
 public class TirageController {
 
+    @Autowired
     private final TirageService tirageService;
     private final ListeService listeService;
     private final PostulantService postulantService;
     private  final PostulantTrieService postulantTrieService;
 
     @PostMapping("/createTirage/{libelle_liste}/{nbre}")
-    public List<Object> create(@RequestBody Tirage tirage, @PathVariable String libelle_liste, @PathVariable Long nbre){
+    public String create(@RequestBody Tirage tirage, @PathVariable String libelle_liste, @PathVariable Long nbre){
         Liste liste = listeService.trouverListeParLibelle(libelle_liste);
-        List<Object[]> postuL = postulantService.TrouveridPostList(liste.getId_liste());
+        List<Postulant> postuL = postulantService.TrouveridPostList(liste.getId_liste());
 /*
        for (Object p: postuL)
        {
@@ -37,14 +39,13 @@ public class TirageController {
         //postulantTrieService.creer(pl.)
 
         //postulantTrieService.creer(postuL);
-        List<Object> lp = tirageService.creer(tirage, postuL, nbre);//recuperation des id des postulant trié
-        //Long idTirage = tirageService.trouverTirageParLibelle(tirage.getLibellet()).getId();
+       List<Postulant> lp = tirageService.creer(tirage, postuL, nbre);//recuperation des id des postulant trié
+        long idTirage = tirageService.trouverTirageParLibelle(tirage.getLibellet()).getId();
 
-       // for (Object l : lp){
-            //long ll = l;
-           // postulantTrieService.creer(, idTirage);
-       // }
+        for (Postulant p : lp){
+            postulantTrieService.creer(p.getIdpostulant(), p.getNom_postulant(), p.getPrenom_postulant(),p.getNumero_postulant(),p.getEmail(),idTirage);
+        }
 
-        return lp;
+        return "succes";
     }
 }

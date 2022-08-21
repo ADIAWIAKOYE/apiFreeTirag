@@ -25,7 +25,7 @@ public class PostulantExcelimport {
         String email_postulant="";
 
 
-        String excelFilePath = "C:\\Users\\mkkeita\\Desktop\\projects\\apiFreeTirag\\file1.xlsx";
+       // String excelFilePath = "C:\\Users\\mkkeita\\Desktop\\projects\\apiFreeTirag\\file1.xlsx";
 
         long start = System.currentTimeMillis();//l'heure de debut
 

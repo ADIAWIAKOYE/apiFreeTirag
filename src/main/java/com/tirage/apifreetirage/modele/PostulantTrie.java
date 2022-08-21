@@ -15,10 +15,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class PostulantTrie{
     @Id
-    private int id;
+    private long idpostulant;
+    private String nompostulant;
+    private String prenompostulant;
+    private long numeropostulant;
+    private String email;
 
     @ManyToOne
-    @JoinColumn(name = "idtirage_id")
+    @JoinColumn(name = "idtirageid")
     private Tirage idtirage;
 
 

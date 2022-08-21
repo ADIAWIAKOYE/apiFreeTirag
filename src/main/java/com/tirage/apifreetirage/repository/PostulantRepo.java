@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PostulantRepo extends JpaRepository<Postulant, Long> {
-
-    @Query(value = "select idpostulant from postulant where idlist_id_liste = :idliste", nativeQuery = true)
-    public List<Object[]> FINDIDPOSTLIST(@Param("idliste") Long idliste);
+    //selection de tous les  postulants sur la liste donnée par l'user
+    @Query(value = "select * from postulant where idlist_id_liste = :idliste", nativeQuery = true)
+    public List<Postulant> FINDIDPOSTLIST(@Param("idliste") Long idliste);
 
 }

@@ -24,7 +24,7 @@ public class PostulantServiceImpl implements PostulantService{
     }
 
     @Override
-    public List<Object[]> TrouveridPostList(Long idListe) {
+    public List<Postulant> TrouveridPostList(long idListe) {
 
         return repoPost.FINDIDPOSTLIST(idListe);
     }

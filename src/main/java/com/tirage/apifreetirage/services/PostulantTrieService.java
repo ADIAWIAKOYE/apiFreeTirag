@@ -7,5 +7,7 @@ import java.util.List;
 public interface PostulantTrieService {
 
     //int  creer(List<PostulantTrie> lt);
-    int  creer();
+    int  creer(long idpostulant, String nom_postulant, String prenom_postulant, long numero_postulant, String email, long idtirage_id);
+
 }
+

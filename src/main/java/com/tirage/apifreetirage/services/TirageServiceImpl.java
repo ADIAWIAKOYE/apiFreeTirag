@@ -1,5 +1,6 @@
 package com.tirage.apifreetirage.services;
 
+import com.tirage.apifreetirage.modele.Postulant;
 import com.tirage.apifreetirage.modele.Tirage;
 import com.tirage.apifreetirage.repository.TirageRepo;
 import lombok.AllArgsConstructor;
@@ -19,11 +20,12 @@ public class TirageServiceImpl implements TirageService{
 
 
     @Override
-    public List<Object> creer(@RequestBody Tirage tirage, List<Object[]> listAtrier, Long nbre) {
+    public List<Postulant> creer(@RequestBody Tirage tirage, List<Postulant> listAtrier, Long nbre) {
 
         //création d'une variable random
         Random rand = new Random();
-        List<Object> list = new ArrayList<>();
+        //declaration de la liste qui contiendra les postulants selectionnés
+        List<Postulant> list = new ArrayList<>();
         for (int i = 0; i< nbre; i++)
         {
             Integer idAct = rand.nextInt(listAtrier.size());
@@ -41,8 +43,8 @@ public class TirageServiceImpl implements TirageService{
     }
 
     @Override
-    public Tirage trouverTirageParLibelle(String libelle) {
-        return tirageRepo.findByLibellet(libelle);
+    public Tirage trouverTirageParLibelle(String libellet) {
+        return tirageRepo.findByLibellet(libellet);
     }
 
 }
