@@ -16,24 +16,33 @@ public class TirageServiceImpl implements TirageService{
 
     public final TirageRepo tirageRepo;
 
+
+
     @Override
-    public List<Integer> creer(@RequestBody Tirage tirage, List<Object[]> listAtrier, Long nbre) {
+    public List<Object> creer(@RequestBody Tirage tirage, List<Object[]> listAtrier, Long nbre) {
 
         //création d'une variable random
         Random rand = new Random();
-        List<Integer> list = new ArrayList<>();
+        List<Object> list = new ArrayList<>();
         for (int i = 0; i< nbre; i++)
         {
-            Integer idAct = rand.nextInt(listAtrier.size()+1);
+            Integer idAct = rand.nextInt(listAtrier.size());
 
-            while (idAct == 0 || list.contains(idAct)){
-                idAct = rand.nextInt(listAtrier.size()+1);
-            }
+            //while (idAct == 0 || list.contains(idAct)){
+                //idAct = rand.nextInt(listAtrier.size());
+            //}
 
-            list.add(idAct);
+            list.add(listAtrier.get(idAct));
+
+            listAtrier.remove(listAtrier.get(idAct));
         }
         tirageRepo.save(tirage);
         return list;
+    }
+
+    @Override
+    public Tirage trouverTirageParLibelle(String libelle) {
+        return tirageRepo.findByLibellet(libelle);
     }
 
 }

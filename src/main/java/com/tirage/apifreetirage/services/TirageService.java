@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface TirageService {
 
-    List<Integer> creer(Tirage tirage, List<Object[]> listAtrier,  Long nbre);
+    List<Object> creer(Tirage tirage, List<Object[]> listAtrier,  Long nbre);
+    Tirage trouverTirageParLibelle(String libelle);
 }

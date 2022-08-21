@@ -17,9 +17,9 @@ public class PostulantTrieController {
     @Autowired
     private final PostulantTrieService postulantTrieService;
 
-    public int create(List<Integer> postT){
+    public int create(){
 
-        return postulantTrieService.creer(postT);
+        return postulantTrieService.creer();
     }
 
 }

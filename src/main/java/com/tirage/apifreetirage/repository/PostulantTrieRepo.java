@@ -12,6 +12,6 @@ public interface PostulantTrieRepo extends JpaRepository<PostulantTrie, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "insert into postulant_trie(id) values (:id);", nativeQuery = true)
-    public int INSERTPOSTTIRE(@Param("id") int id);
+    @Query(value = "insert into postulant_trie(id, idtirage_id) values (:id, :idtirage_id);", nativeQuery = true)
+    public int INSERTPOSTTIRE(@Param("id") int id, long idtirage_id);
 }

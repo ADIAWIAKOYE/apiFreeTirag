@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface PostulantTrieService {
 
-    int  creer(List<Integer> postT);
+    //int  creer(List<PostulantTrie> lt);
+    int  creer();
 }

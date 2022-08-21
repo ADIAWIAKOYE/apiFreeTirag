@@ -18,7 +18,7 @@ public class Tirage {
     private Long id;
     private Date date;
 
-    private  String libelle;
+    private  String libellet;
 
     @ManyToOne
     @JoinColumn(name = "idliste_id_liste")

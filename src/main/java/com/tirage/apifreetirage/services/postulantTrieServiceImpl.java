@@ -14,12 +14,13 @@ public class postulantTrieServiceImpl implements PostulantTrieService {
     private  final PostulantTrieRepo postulantTrieRepo;
 
     @Override
-    public int creer(List<Integer> postT) {
+    public int creer() {
 
-        for(int i = 0; i< postT.size(); i++)
+        /*for(int i = 0; i< postT.size(); i++)
         {
-            postulantTrieRepo.INSERTPOSTTIRE(postT.get(i));
-        }
+            postulantTrieRepo.save(postT.get(i));
+        }*/
+       // postulantTrieRepo.INSERTPOSTTIRE(id, idTrie);
         return 1;
     }
 
