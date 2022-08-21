@@ -15,7 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class PostulantTrie{
     @Id
-    private Long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "idtirage_id")

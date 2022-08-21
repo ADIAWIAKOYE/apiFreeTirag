@@ -6,7 +6,6 @@ import com.tirage.apifreetirage.modele.PostulantExcelimport;
 import com.tirage.apifreetirage.services.ListeService;
 import com.tirage.apifreetirage.services.PostulantService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +18,7 @@ import java.util.List;
 @RequestMapping("/postulant")
 @AllArgsConstructor
 public class PostulantController {
-    @Autowired
+    //@Autowired
     final private PostulantService postulantservice;
     final private ListeService listeService;
     //final private Liste liste;

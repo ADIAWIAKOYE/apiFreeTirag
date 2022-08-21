@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 public interface ListeRepo extends JpaRepository<Liste, Long> {
 
-    Liste findByLibelle(String nom);
+    Liste findByLibelle(String libelle);
 
     @Modifying
     @Transactional
