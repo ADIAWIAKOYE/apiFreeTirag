@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TirageService {
 
-    List<Postulant> creer(Tirage tirage, List<Postulant> listAtrier, Long nbre);
+    List<Postulant> creer(Tirage tirage, List<Postulant> listAtrier, Long nbre,long idliste);
 
     Tirage trouverTirageParLibelle(String libellet);
 }

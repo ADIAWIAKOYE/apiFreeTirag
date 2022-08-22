@@ -29,7 +29,9 @@ public class TirageController {
     @PostMapping("/createTirage/{libelle_liste}/{nbre}")
     public String create(@RequestBody Tirage tirage, @PathVariable String libelle_liste, @PathVariable Long nbre){
         Liste liste = listeService.trouverListeParLibelle(libelle_liste);
-        List<Postulant> postuL = postulantService.TrouveridPostList(liste.getId_liste());
+        //retourne tous les postulants d'une liste donnée
+        long idliste = liste.getId_liste();//identifiant de la liste entrée par l'user
+        List<Postulant> postuL = postulantService.TrouveridPostList(idliste);
 /*
        for (Object p: postuL)
        {
@@ -39,7 +41,7 @@ public class TirageController {
         //postulantTrieService.creer(pl.)
 
         //postulantTrieService.creer(postuL);
-       List<Postulant> lp = tirageService.creer(tirage, postuL, nbre);//recuperation des id des postulant trié
+       List<Postulant> lp = tirageService.creer(tirage, postuL, nbre, idliste);//recuperation des id des postulant trié
         long idTirage = tirageService.trouverTirageParLibelle(tirage.getLibellet()).getId();
 
         for (Postulant p : lp){

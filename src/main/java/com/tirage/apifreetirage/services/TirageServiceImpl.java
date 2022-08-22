@@ -20,7 +20,7 @@ public class TirageServiceImpl implements TirageService{
 
 
     @Override
-    public List<Postulant> creer(@RequestBody Tirage tirage, List<Postulant> listAtrier, Long nbre) {
+    public List<Postulant> creer(@RequestBody Tirage tirage, List<Postulant> listAtrier, Long nbre, long idliste) {
 
         //création d'une variable random
         Random rand = new Random();
@@ -38,7 +38,7 @@ public class TirageServiceImpl implements TirageService{
 
             listAtrier.remove(listAtrier.get(idAct));
         }
-        tirageRepo.save(tirage);
+        tirageRepo.INSERERTIRAGE(tirage.getLibellet(), idliste);
         return list;
     }
 
