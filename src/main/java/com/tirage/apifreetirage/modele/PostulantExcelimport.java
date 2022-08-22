@@ -7,7 +7,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +24,7 @@ public class PostulantExcelimport {
         String email_postulant="";
 
 
-        String excelFilePath = "C:\\Users\\mkkeita\\Desktop\\projects\\apiFreeTirag\\file1.xlsx";
+        //String excelFilePath = "C:\\Users\\mkkeita\\Desktop\\projects\\apiFreeTirag\\file1.xlsx";
 
         long start = System.currentTimeMillis();//l'heure de debut
 
@@ -68,7 +67,6 @@ public class PostulantExcelimport {
                     //postulantList.add(new Postulant(nom_postulant, prenom_postulant, numero_postulant, email_postulant));
                 }
                 postulantList.add(new Postulant(nom_postulant, prenom_postulant, numero_postulant, email_postulant));
-
 
             }
             workbook.close();

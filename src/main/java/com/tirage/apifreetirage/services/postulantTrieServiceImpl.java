@@ -28,4 +28,9 @@ public class postulantTrieServiceImpl implements PostulantTrieService {
         return postulantTrieRepo.INSERTPOSTTIRE(idpostulant, nom_postulant, prenom_postulant, numero_postulant, email, idtirage_id);
     }
 
+    @Override
+    public List<PostulantTrie> trouverPostulantTrieParIdtirage(long idtirageid) {
+        return postulantTrieRepo.FINDALLPOSTULANTTRIEPARID(idtirageid);
+    }
+
 }

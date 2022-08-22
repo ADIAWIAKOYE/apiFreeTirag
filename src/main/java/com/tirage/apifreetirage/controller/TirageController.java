@@ -27,27 +27,26 @@ public class TirageController {
     private  final PostulantTrieService postulantTrieService;
 
     @PostMapping("/createTirage/{libelle_liste}/{nbre}")
-    public String create(@RequestBody Tirage tirage, @PathVariable String libelle_liste, @PathVariable Long nbre){
-        Liste liste = listeService.trouverListeParLibelle(libelle_liste);
-        //retourne tous les postulants d'une liste donnée
-        long idliste = liste.getId_liste();//identifiant de la liste entrée par l'user
-        List<Postulant> postuL = postulantService.TrouveridPostList(idliste);
-/*
-       for (Object p: postuL)
-       {
-           System.out.println(p);
-       }
-*/      //List<Object> pl = ;
-        //postulantTrieService.creer(pl.)
+    public List<PostulantTrie> create(@RequestBody Tirage tirage, @PathVariable String libelle_liste, @PathVariable Long nbre){
 
-        //postulantTrieService.creer(postuL);
-       List<Postulant> lp = tirageService.creer(tirage, postuL, nbre, idliste);//recuperation des id des postulant trié
-        long idTirage = tirageService.trouverTirageParLibelle(tirage.getLibellet()).getId();
+        if (tirageService.trouverTirageParLibelle(tirage.getLibellet()) == null){//verifie si le tirage existe déjà
+            //recuperation de la liste demandée par user
+            Liste liste = listeService.trouverListeParLibelle(libelle_liste);
+            long idliste = liste.getId_liste();//identifiant de la liste entrée par l'user
+            //retourne tous les postulants d'une liste donnée
+            List<Postulant> postuL = postulantService.TrouveridPostList(idliste);
 
-        for (Postulant p : lp){
-            postulantTrieService.creer(p.getIdpostulant(), p.getNom_postulant(), p.getPrenom_postulant(),p.getNumero_postulant(),p.getEmail(),idTirage);
+            Tirage ttt = tirageService.creer(tirage, liste);
+            List<Postulant> lp = tirageService.trie(postuL, nbre);//recuperation des postulant trié
+
+            long idTirage = ttt.getId();
+            for (Postulant p : lp){
+                postulantTrieService.creer(p.getIdpostulant(), p.getNom_postulant(), p.getPrenom_postulant(),p.getNumero_postulant(),p.getEmail(),idTirage);
+            }
+            return postulantTrieService.trouverPostulantTrieParIdtirage(idTirage);
+        }else{
+            return null;
         }
 
-        return "succes";
     }
 }

@@ -15,7 +15,7 @@ public interface TirageRepo extends JpaRepository<Tirage, Long> {
     //requete permettant d'inser un tirage avec son id
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO tirage(date, libellet, idliste_id_liste) VALUES(NOW(),?,?,?);",nativeQuery = true)
+    @Query(value = "INSERT INTO tirage(date, libellet, idliste_id_liste) VALUES(NOW(),?,?);",nativeQuery = true)
     public int INSERERTIRAGE(String libellet, long idliste_id_liste);
 
 

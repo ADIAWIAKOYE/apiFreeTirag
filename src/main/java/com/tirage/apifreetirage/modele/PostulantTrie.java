@@ -15,6 +15,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class PostulantTrie{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private long idpostulant;
     private String nompostulant;
     private String prenompostulant;

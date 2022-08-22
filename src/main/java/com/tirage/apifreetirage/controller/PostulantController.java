@@ -36,14 +36,18 @@ public class PostulantController {
             return "Fichier vide";
         }else{
             liste.setDate_liste(new Date());
-            Liste l= listeService.creer(liste);
-            //long id_liste = listeService.trouverListeParLibelle(libelle).getId_liste();
-
-            for (Postulant p:postulantList){
-                p.setIdlist(l);
+            if(listeService.trouverListeParLibelle(liste.getLibelle()) == null){//verifie si la liste existe déjàç
+                Liste l= listeService.creer(liste);
+                for (Postulant p:postulantList){
+                    p.setIdlist(l);
+                }
+                postulantservice.enregistrer(postulantList);
+                return "liste importé avec succes";
+           } else {
+                return "Cette liste existe déjà";
             }
-            postulantservice.enregistrer(postulantList);
-            return "import succsfully";
+
+
         }
     }
 }
