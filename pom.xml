@@ -30,6 +30,7 @@
         ajout des dependances debut
         POI est une bibliotheque pour lire, écrire et modifier dynamiquement le contenu d'une feuille de calcul Excel et
          fournir un moyen efficace d'intégrer Microsoft Excel dans une application Java
+         POI prend en charge les fichiers xlsx et xls
          -->
         <dependency>
             <groupId>org.apache.poi</groupId>

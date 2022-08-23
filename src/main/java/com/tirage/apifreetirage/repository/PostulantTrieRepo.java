@@ -20,6 +20,7 @@ public interface PostulantTrieRepo extends JpaRepository<PostulantTrie, Long> {
     @Transactional
     @Query(value = "INSERT INTO postulant_trie(idpostulant,nompostulant,prenompostulant,numeropostulant,email,idtirageid) VALUES(?,?,?,?,?,?);",nativeQuery = true)
     public int INSERTPOSTTIRE(long idpostulant, String nom, String prenom, long numero, String email, long idtirageid );
+
     /*@Modifying
     @Transactional
     @Query(value = "insert into postulanttrie(idpostulant,nompostulant,prenompostulant,numeropostulant,email, idtirage) values (:idpostulant,:nompostulant,prenompostulant,:numeropostulant,:email, :idtirage);", nativeQuery = true)
