@@ -26,7 +26,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--ajout des dependances debut -->
+        <!--
+        ajout des dependances debut
+        POI est une bibliotheque pour lire, écrire et modifier dynamiquement le contenu d'une feuille de calcul Excel et
+         fournir un moyen efficace d'intégrer Microsoft Excel dans une application Java
+         -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>

@@ -19,29 +19,48 @@ import java.util.List;
 @AllArgsConstructor
 public class PostulantController {
     //@Autowired
+    /*
+    * Definition des services postulant, service
+    * */
     final private PostulantService postulantservice;
     final private ListeService listeService;
-    //final private Liste liste;
-/*
-    @Autowired
-    private PostulantRepo postrepo;
-*/
-    @RequestMapping("/import/excel/{libelle}")
+
+   //Le controlleur permettant d'importer un fichier et créer automatiquement une liste
+    @RequestMapping("/import/excel/{libelle}")//il prend en parametre le libelle de la liste
     @ResponseBody
+
+    /*
+    * MultipartFile, classe java permettant d'importer un ou plusieurs fichiers
+    * */
     public String importFormExcel(@Param("file") MultipartFile file, Liste liste, String libelle) {
-        //listeService.ajouterIdListe();
+
+        /*
+        * Instaciation de la classe qui permet d'importer un fichier, lire son contenu et
+        * le mettre dans une liste de type postulant
+        * */
         PostulantExcelimport excelImporter = new PostulantExcelimport();
+
+        //stockage de la liste des postulants retournée par la classe "PostulantExcelimport"  dans postulantList
         List<Postulant> postulantList = excelImporter.excelImport(file);
-        if(postulantList.size()==0){
+
+        if(postulantList.size()==0){//verifie si la liste est vide
             return "Fichier vide";
-        }else{
-            liste.setDate_liste(new Date());
-            if(listeService.trouverListeParLibelle(liste.getLibelle()) == null){//verifie si la liste existe déjàç
-                Liste l= listeService.creer(liste);
+
+        }else{//si la liste n'est pas vide
+            liste.setDate_liste(new Date());//on modifie la date de la liste en lui donnant la date actuelle
+
+            if(listeService.trouverListeParLibelle(liste.getLibelle()) == null){//verifie si la liste existe déjà
+
+                Liste l= listeService.creer(liste);//on crée la liste et garder cette liste dans l
+
+               /*
+               * Dans la boucle for suivant on parcours la liste des postulants en lui ajoutant l'id de la liste
+               * sur la quelle le tie a été tiré
+               * */
                 for (Postulant p:postulantList){
-                    p.setIdlist(l);
+                    p.setIdlist(l);//ajout de l'id de la liste à tous les  postulants(foreign key)
                 }
-                postulantservice.enregistrer(postulantList);
+                postulantservice.enregistrer(postulantList);//enregistrement de la liste des postulants importés dans la base
                 return "liste importé avec succes";
            } else {
                 return "Cette liste existe déjà";

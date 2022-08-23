@@ -15,6 +15,7 @@ import java.util.List;
 public interface PostulantTrieRepo extends JpaRepository<PostulantTrie, Long> {
 
 
+    //requete permettant d'inserer les postulant trié
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO postulant_trie(idpostulant,nompostulant,prenompostulant,numeropostulant,email,idtirageid) VALUES(?,?,?,?,?,?);",nativeQuery = true)
@@ -25,6 +26,7 @@ public interface PostulantTrieRepo extends JpaRepository<PostulantTrie, Long> {
     public int INSERTPOSTTIRE(@Param("idpostulant") long idpostulant, @Param("nompostulant") String nompostulant, @Param("prenompostulant") String prenompostulant, @Param("numeropostulant") long numeropostulant,@Param("email") String email,@Param("idtirage") long idtirage);
 */
 
+    //requette permettant de retourner les postulants triés lors d'un
     @Modifying
     @Transactional
     @Query(value = "SELECT * FROM postulant_trie where idtirageid = :idtirageid",nativeQuery = true)

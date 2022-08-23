@@ -16,8 +16,9 @@ import java.util.List;
 public class PostulantTrieController {
 
     @Autowired
-    private final PostulantTrieService postulantTrieService;
+    private final PostulantTrieService postulantTrieService;//definition du service des postulant triés
 
+    //methode permettant de créer un postulant trié dans la table postulant trié
     public int create(long idpostulant, String nom_postulant, String prenom_postulant, long numero_postulant, String email, long idtirage_id){
 
         return postulantTrieService.creer(idpostulant, nom_postulant, prenom_postulant,numero_postulant, email,idtirage_id);

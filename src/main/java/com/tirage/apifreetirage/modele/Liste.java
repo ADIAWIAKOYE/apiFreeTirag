@@ -1,25 +1,33 @@
 package com.tirage.apifreetirage.modele;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "liste")
-@Getter
-@Setter
-@NoArgsConstructor
 
+//transforme cette classe en table
+@Entity
+
+//definis le nom de la table
+@Table(name = "liste")
+
+//permet d'inclure les getter et setter et toString
+@Data
+
+//paramettre sans arguments
+@NoArgsConstructor
 
 public class Liste {
 
-    @Id
+    @Id//permet de prendre id_liste comme id de cette table
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    //id de la liste
     private long id_liste;
+
     private String libelle;
+
     private Date date_liste;
 
 

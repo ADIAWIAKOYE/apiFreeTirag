@@ -11,21 +11,25 @@ import java.util.List;
 @AllArgsConstructor
 public class ListeServiceImpl implements ListeService {
 
-
+    //definition du repository liste
     private final ListeRepo listeRepo;
 
+    //redefinition de la methode de creation de liste
     @Override
     public Liste creer(Liste liste) {
 
-        return listeRepo.save(liste);
+        return listeRepo.save(liste);//creation de la liste
     }
 
+
+    //redefinition de la methode de recuperation de la liste par son libelle
     @Override
     public Liste trouverListeParLibelle(String libelle) {
 
-        return listeRepo.findByLibelle(libelle);
+        return listeRepo.findByLibelle(libelle);//recuperation de la liste par libelle
     }
 
+    //methode non utilisé
     @Override
     public int ajouterIdListe(Long idList) {
 

@@ -11,12 +11,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
+/*
+* la classe permettant d'uploader un fichier excel et de lire son contenu et le
+* mettre également dans une liste de type postulant et retourner cette liste
+* */
 public class PostulantExcelimport {
 
-    public List<Postulant> excelImport(MultipartFile file) {
+    public List<Postulant> excelImport(MultipartFile file)
+    {
+        //definition d'une liste vide de type postulant pour stocker les postulant trié
         List <Postulant> postulantList = new ArrayList<>();
 
+
+        /*
+        * les differentes variables qui seront utilisées pour stocker les donnée du fichier
+        * */
 
         String nom_postulant="";
         String prenom_postulant="";
@@ -26,7 +35,8 @@ public class PostulantExcelimport {
 
         //String excelFilePath = "C:\\Users\\mkkeita\\Desktop\\projects\\apiFreeTirag\\file1.xlsx";
 
-        long start = System.currentTimeMillis();//l'heure de debut
+        //l'heure de debut de l'importation
+        long start = System.currentTimeMillis();
 
         try {
             //FileInputStream inputStrean = new FileInputStream(file.getInputStream());
@@ -46,7 +56,9 @@ public class PostulantExcelimport {
                     Cell nextCell=cellIterator.next();
 
                     int columnIndex=nextCell.getColumnIndex();
+
                     switch (columnIndex){
+
                         case 0:
                             nom_postulant=nextCell.getStringCellValue();
                             System.out.println(nom_postulant);
