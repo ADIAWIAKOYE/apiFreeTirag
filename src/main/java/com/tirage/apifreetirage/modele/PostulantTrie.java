@@ -1,17 +1,36 @@
 package com.tirage.apifreetirage.modele;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+//voir la classe Liste pour les commentaire des annotations et les relation entre les tables
+
 
 @Entity
 @Table(name="postulantTrie")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class PostulantTrie{
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private long idpostulant;
+
+    private String nompostulant;
+
+    private String prenompostulant;
+
+    private long numeropostulant;
+
+    private String email;
+
+    //relation entre la table postulant trié et tirage
+    @ManyToOne
+    @JoinColumn(name = "idtirageid")
+    private Tirage idtirage;
+
+
 }
