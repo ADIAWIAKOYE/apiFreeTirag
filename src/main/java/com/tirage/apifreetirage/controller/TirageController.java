@@ -65,4 +65,10 @@ public class TirageController {
         }
 
     }
+
+    @GetMapping("/readTirage")
+    public List<Tirage> read(){
+
+        return tirageService.lire();
+    }
 }

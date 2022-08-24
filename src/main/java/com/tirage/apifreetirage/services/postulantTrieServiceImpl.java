@@ -32,4 +32,10 @@ public class postulantTrieServiceImpl implements PostulantTrieService {
         return postulantTrieRepo.FINDALLPOSTULANTTRIEPARID(idtirageid);
     }
 
+    @Override
+    public List<PostulantTrie> lire() {
+
+        return postulantTrieRepo.findAll();
+    }
+
 }

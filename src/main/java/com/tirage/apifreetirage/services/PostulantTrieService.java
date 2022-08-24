@@ -11,5 +11,7 @@ public interface PostulantTrieService {
 
     //methode permettant de retourner les postulant d'untirage donnée
     List<PostulantTrie> trouverPostulantTrieParIdtirage(long idtirageid);
+
+    List<PostulantTrie> lire();
 }
 

@@ -4,9 +4,11 @@ import com.tirage.apifreetirage.modele.PostulantTrie;
 import com.tirage.apifreetirage.services.PostulantTrieService;
 import com.tirage.apifreetirage.services.TirageService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -25,9 +27,14 @@ public class PostulantTrieController {
         return postulantTrieService.creer(idpostulant, nom_postulant, prenom_postulant,numero_postulant, email,idtirage_id);
     }
 
+    @GetMapping("/readPostlantTrie")
+    public List<PostulantTrie> read(){
+
+        return postulantTrieService.lire();
+    }
 
     @GetMapping("/recupererPostulant/{libellet}")
-    public List<PostulantTrie> recupererPostulantTire(@PathVariable  String libellet){
+    public List<PostulantTrie> recupererPostulantTire(@PathVariable String libellet){
 
         return postulantTrieService.trouverPostulantTrieParIdtirage(tirageService.trouverTirageParLibelle(libellet).getId());
     }

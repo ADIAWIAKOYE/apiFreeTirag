@@ -12,4 +12,6 @@ public interface PostulantService {
 
  //methode permettant de recuperer tous les postulant d'une liste donnée
  List<Postulant> TrouveridPostList(long idListe);
+
+ List<Postulant> lire();
 }

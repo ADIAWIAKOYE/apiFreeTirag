@@ -36,5 +36,10 @@ public class ListeServiceImpl implements ListeService {
         return listeRepo.INSERTIDLIST(idList);
     }
 
+    @Override
+    public List<Liste> lire() {
+
+        return listeRepo.findAll();
+    }
 
 }

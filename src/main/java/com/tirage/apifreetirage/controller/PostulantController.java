@@ -69,4 +69,10 @@ public class PostulantController {
 
         }
     }
+
+    @GetMapping("/readPostulant")
+    public List<Postulant> read(){
+
+        return postulantservice.lire();
+    }
 }

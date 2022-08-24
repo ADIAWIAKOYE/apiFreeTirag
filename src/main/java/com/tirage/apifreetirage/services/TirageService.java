@@ -16,4 +16,6 @@ public interface TirageService {
 
     //methode permettant de trouver un tirage par son libellet
     Tirage trouverTirageParLibelle(String libellet);
+
+    List<Tirage> lire();
 }
