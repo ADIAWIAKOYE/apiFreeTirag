@@ -14,6 +14,8 @@ import java.util.Date;
 @Entity
 @Table(name = "tirage")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Tirage {
     @Id
