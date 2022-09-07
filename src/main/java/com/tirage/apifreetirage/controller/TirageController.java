@@ -9,7 +9,6 @@ import com.tirage.apifreetirage.services.PostulantService;
 import com.tirage.apifreetirage.services.PostulantTrieService;
 import com.tirage.apifreetirage.services.TirageService;
 import lombok.AllArgsConstructor;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
