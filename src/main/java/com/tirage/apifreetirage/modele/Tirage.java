@@ -27,6 +27,8 @@ public class Tirage {
 
     private  String libellet;
 
+    private Long nbre;
+
     //relation entre la table tirage et la table liste
     @ManyToOne
     @JoinColumn(name = "idliste_id_liste")
