@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/PostulantTrie")
 @AllArgsConstructor
-public class PostulantTrieController {
+public class  PostulantTrieController {
 
     @Autowired
     private final PostulantTrieService postulantTrieService;//definition du service des postulant triés
