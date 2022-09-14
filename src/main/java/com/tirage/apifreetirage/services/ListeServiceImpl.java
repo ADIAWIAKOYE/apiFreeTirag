@@ -39,11 +39,11 @@ public class ListeServiceImpl implements ListeService {
     }
 
     @Override
-<<<<<<< HEAD
     public List<Liste> lire() {
 
         return listeRepo.findAll();
-=======
+    }
+
     public Liste mettreAjourListeNombreTirage(Liste liste) {
         return listeRepo.findById(liste.getId_liste())
                 .map(l -> {
@@ -51,7 +51,6 @@ public class ListeServiceImpl implements ListeService {
 
                     return listeRepo.save(l);
                 }).orElseThrow(() -> new RuntimeException("liste mise à jour avec jour"));
->>>>>>> main
     }
 
     @Override

@@ -71,12 +71,12 @@ public class TirageController {
 
     }
 
-<<<<<<< HEAD
+
     @GetMapping("/readTirage")
     public List<Tirage> read(){
 
         return tirageService.lire();
-=======
+}
     @GetMapping("/recupererTirages")
     public List<Tirage> recupererTouslesTirages(){
         return tirageRepo.findAll();
@@ -90,6 +90,6 @@ public class TirageController {
     @GetMapping("recupererTirageParIdliste/{id_liste}")
     public List<Tirage> recupererTiragesparListe(@PathVariable long id_liste){
         return tirageRepo.FIND_TIRAGE_BY_LISTE_ID(id_liste);
->>>>>>> main
+
     }
 }
