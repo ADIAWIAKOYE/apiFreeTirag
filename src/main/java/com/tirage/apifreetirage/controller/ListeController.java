@@ -23,13 +23,12 @@ public class ListeController {
         return listeService.creer(liste);//creation de la liste
     }
 
-<<<<<<< HEAD
     @GetMapping("/readListe")
     public List<Liste> read(){
 
         return listeService.lire();
     }
-=======
+
     @GetMapping("/listes")
     public List<Liste> recupererListe(){
         return listeRepo.findAll();
@@ -47,5 +46,4 @@ public class ListeController {
         return listeService.recupererListeTirees().size();
     }
 
->>>>>>> main
 }
