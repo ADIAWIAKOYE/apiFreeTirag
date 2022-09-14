@@ -3,6 +3,8 @@ package com.tirage.apifreetirage.services;
 import com.tirage.apifreetirage.modele.Liste;
 import com.tirage.apifreetirage.modele.Tirage;
 
+import java.util.List;
+
 
 public interface ListeService {
 
@@ -16,6 +18,8 @@ public interface ListeService {
     int ajouterIdListe(Long idList);
 
     Liste mettreAjourListeNombreTirage(Liste liste);
+
+    List<Liste> recupererListeTirees();
 
 
 }

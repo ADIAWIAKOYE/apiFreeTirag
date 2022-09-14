@@ -27,4 +27,17 @@ public class ListeController {
     public List<Liste> recupererListe(){
         return listeRepo.findAll();
     }
+
+    @GetMapping("/listesTirees")
+    public List<Liste> recupererToutesLesListes(){
+
+        return listeService.recupererListeTirees();
+    }
+
+    @GetMapping("/listesNombreTirees")
+    public int recupererNombreListes(){
+
+        return listeService.recupererListeTirees().size();
+    }
+
 }

@@ -48,5 +48,8 @@ public class ListeServiceImpl implements ListeService {
                 }).orElseThrow(() -> new RuntimeException("liste mise à jour avec jour"));
     }
 
-
+    @Override
+    public List<Liste> recupererListeTirees() {
+        return listeRepo.FIND_ALL_LISTE_TIREE();
+    }
 }
