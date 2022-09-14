@@ -30,5 +30,7 @@ public class Liste {
 
     private Date date_liste;
 
+    private Long nbre_tirage;
+
 
 }

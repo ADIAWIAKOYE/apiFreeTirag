@@ -1,6 +1,7 @@
 package com.tirage.apifreetirage.services;
 
 import com.tirage.apifreetirage.modele.Liste;
+import com.tirage.apifreetirage.modele.Tirage;
 import com.tirage.apifreetirage.repository.ListeRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class ListeServiceImpl implements ListeService {
     @Override
     public Liste creer(Liste liste) {
 
+        liste.setNbre_tirage(0L);
         return listeRepo.save(liste);//creation de la liste
     }
 
@@ -37,9 +39,23 @@ public class ListeServiceImpl implements ListeService {
     }
 
     @Override
+<<<<<<< HEAD
     public List<Liste> lire() {
 
         return listeRepo.findAll();
+=======
+    public Liste mettreAjourListeNombreTirage(Liste liste) {
+        return listeRepo.findById(liste.getId_liste())
+                .map(l -> {
+                        l.setNbre_tirage(l.getNbre_tirage()+1);
+
+                    return listeRepo.save(l);
+                }).orElseThrow(() -> new RuntimeException("liste mise à jour avec jour"));
+>>>>>>> main
     }
 
+    @Override
+    public List<Liste> recupererListeTirees() {
+        return listeRepo.FIND_ALL_LISTE_TIREE();
+    }
 }
