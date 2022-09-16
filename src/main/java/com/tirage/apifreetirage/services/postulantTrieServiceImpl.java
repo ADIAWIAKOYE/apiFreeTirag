@@ -1,6 +1,7 @@
 package com.tirage.apifreetirage.services;
 
 import com.tirage.apifreetirage.modele.PostulantTrie;
+import com.tirage.apifreetirage.modele.Tirage;
 import com.tirage.apifreetirage.repository.PostulantTrieRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class postulantTrieServiceImpl implements PostulantTrieService {
 
         //retour des postulant trié
         return postulantTrieRepo.FINDALLPOSTULANTTRIEPARID(idtirageid);
+    }
+
+    @Override
+    public List<PostulantTrie> trouverPostulantTireParTirage(Tirage tirage) {
+        return postulantTrieRepo.findByIdtirage(tirage);
     }
 
 }

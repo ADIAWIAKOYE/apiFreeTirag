@@ -1,6 +1,7 @@
 package com.tirage.apifreetirage.controller;
 
 import com.tirage.apifreetirage.modele.PostulantTrie;
+import com.tirage.apifreetirage.modele.Tirage;
 import com.tirage.apifreetirage.repository.PostulantTrieRepo;
 import com.tirage.apifreetirage.services.PostulantTrieService;
 import com.tirage.apifreetirage.services.TirageService;
@@ -39,6 +40,12 @@ public class PostulantTrieController {
     public List<PostulantTrie> recupererPostulantTireid(@PathVariable  Long id){
 
         return postulantTrieService.trouverPostulantTrieParIdtirage(id);
+    }
+
+    @GetMapping("recuperationParLibelle/{libelle}")
+    public List<PostulantTrie> recupererTiragesparIdTirage(@PathVariable String libelle){
+        Tirage tirage = tirageService.trouverTirageParLibelle(libelle);
+        return postulantTrieService.trouverPostulantTireParTirage(tirage);
     }
 
 }

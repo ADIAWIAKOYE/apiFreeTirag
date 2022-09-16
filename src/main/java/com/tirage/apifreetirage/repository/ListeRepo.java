@@ -21,4 +21,7 @@ public interface ListeRepo extends JpaRepository<Liste, Long> {
 
     @Query(value = "select * from liste where nbre_tirage != 0", nativeQuery = true)
     public List<Liste> FIND_ALL_LISTE_TIREE();
+
+    @Query(value = "select * from liste where id_liste = :id_liste", nativeQuery = true)
+    public Liste FIND_BY_Id_liste(@Param("id_liste") long id_liste);
 }

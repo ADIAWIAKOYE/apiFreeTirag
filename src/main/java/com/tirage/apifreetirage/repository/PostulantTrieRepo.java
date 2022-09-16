@@ -32,5 +32,7 @@ public interface PostulantTrieRepo extends JpaRepository<PostulantTrie, Long> {
     @Transactional
     @Query(value = "SELECT * FROM postulant_trie where idtirageid = :idtirageid",nativeQuery = true)
     public List<PostulantTrie> FINDALLPOSTULANTTRIEPARID(@PathVariable long  idtirageid);
+
+    List<PostulantTrie> findByIdtirage(Tirage tirage);
 }
 

@@ -85,4 +85,11 @@ public class TirageController {
     public List<Tirage> recupererTiragesparListe(@PathVariable long id_liste){
         return tirageRepo.FIND_TIRAGE_BY_LISTE_ID(id_liste);
     }
+
+    @GetMapping("recupererTirageParId/{id}")
+    public Tirage recupererTiragesparIdTirage(@PathVariable long id){
+        return tirageRepo.findById(id).get();
+    }
+
+
 }

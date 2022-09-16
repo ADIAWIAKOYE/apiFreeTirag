@@ -40,4 +40,11 @@ public class ListeController {
         return listeService.recupererListeTirees().size();
     }
 
+    @GetMapping("/listeDonnee/{idliste}")
+    public Liste recupererListe(@PathVariable long idliste){
+
+        return listeService.recupererListeParId(idliste);
+
+    }
+
 }

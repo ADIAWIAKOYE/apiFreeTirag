@@ -1,7 +1,6 @@
 package com.tirage.apifreetirage.services;
 
 import com.tirage.apifreetirage.modele.Liste;
-import com.tirage.apifreetirage.modele.Tirage;
 import com.tirage.apifreetirage.repository.ListeRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -50,6 +49,15 @@ public class ListeServiceImpl implements ListeService {
 
     @Override
     public List<Liste> recupererListeTirees() {
+
         return listeRepo.FIND_ALL_LISTE_TIREE();
+
+    }
+
+    @Override
+    public Liste recupererListeParId(long id_liste) {
+
+        return listeRepo.FIND_BY_Id_liste(id_liste);
+
     }
 }

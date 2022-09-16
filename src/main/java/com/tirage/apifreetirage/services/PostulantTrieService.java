@@ -1,6 +1,7 @@
 package com.tirage.apifreetirage.services;
 
 import com.tirage.apifreetirage.modele.PostulantTrie;
+import com.tirage.apifreetirage.modele.Tirage;
 
 import java.util.List;
 
@@ -11,5 +12,7 @@ public interface PostulantTrieService {
 
     //methode permettant de retourner les postulant d'untirage donnée
     List<PostulantTrie> trouverPostulantTrieParIdtirage(long idtirageid);
+
+    List<PostulantTrie> trouverPostulantTireParTirage(Tirage tirage);
 }
 

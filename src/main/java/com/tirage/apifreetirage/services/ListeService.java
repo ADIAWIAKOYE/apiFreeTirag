@@ -21,5 +21,7 @@ public interface ListeService {
 
     List<Liste> recupererListeTirees();
 
+    Liste recupererListeParId(long id_liste);
+
 
 }
