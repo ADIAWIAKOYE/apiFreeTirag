@@ -34,4 +34,10 @@ public class PostulantServiceImpl implements PostulantService{
         return repoPost.FINDIDPOSTLIST(idListe);//retour des postulant de la liste demandé
     }
 
+    @Override
+    public List<Postulant> lire() {
+
+        return repoPost.findAll();
+    }
+
 }

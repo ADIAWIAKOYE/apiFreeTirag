@@ -38,6 +38,11 @@ public class ListeServiceImpl implements ListeService {
     }
 
     @Override
+    public List<Liste> lire() {
+
+        return listeRepo.findAll();
+    }
+
     public Liste mettreAjourListeNombreTirage(Liste liste) {
         return listeRepo.findById(liste.getId_liste())
                 .map(l -> {

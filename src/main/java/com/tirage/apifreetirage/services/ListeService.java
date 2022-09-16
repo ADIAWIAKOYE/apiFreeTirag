@@ -5,6 +5,8 @@ import com.tirage.apifreetirage.modele.Tirage;
 
 import java.util.List;
 
+import java.util.List;
+
 
 public interface ListeService {
 
@@ -17,11 +19,16 @@ public interface ListeService {
     //methode non utilisé
     int ajouterIdListe(Long idList);
 
+
+    //methode permettant d'afficher la liste des listes enregistrer
+    List<Liste> lire();
+
     Liste mettreAjourListeNombreTirage(Liste liste);
 
     List<Liste> recupererListeTirees();
 
     Liste recupererListeParId(long id_liste);
+
 
 
 }

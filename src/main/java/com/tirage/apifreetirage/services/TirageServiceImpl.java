@@ -74,4 +74,10 @@ public class TirageServiceImpl implements TirageService{
         return tirageRepo.findByLibellet(libellet);
     }
 
+    @Override
+    public List<Tirage> lire() {
+
+        return tirageRepo.findAll();
+    }
+
 }

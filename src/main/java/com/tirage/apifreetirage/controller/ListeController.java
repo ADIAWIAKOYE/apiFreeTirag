@@ -20,7 +20,14 @@ public class ListeController {
     //methode permettant de créer une liste
     @PostMapping("/createListe")
     public Liste create(@RequestBody Liste liste){//prend une liste en format Json
+
         return listeService.creer(liste);//creation de la liste
+    }
+
+    @GetMapping("/readListe")
+    public List<Liste> read(){
+
+        return listeService.lire();
     }
 
     @GetMapping("/listes")

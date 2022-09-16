@@ -37,5 +37,9 @@ public class postulantTrieServiceImpl implements PostulantTrieService {
     public List<PostulantTrie> trouverPostulantTireParTirage(Tirage tirage) {
         return postulantTrieRepo.findByIdtirage(tirage);
     }
+    public List<PostulantTrie> lire() {
+
+        return postulantTrieRepo.findAll();
+    }
 
 }

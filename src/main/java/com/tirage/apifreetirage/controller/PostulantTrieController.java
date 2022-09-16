@@ -15,7 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/PostulantTrie")
 @AllArgsConstructor
-public class PostulantTrieController {
+public class  PostulantTrieController {
 
     @Autowired
     private final PostulantTrieService postulantTrieService;//definition du service des postulant triés
@@ -29,9 +29,14 @@ public class PostulantTrieController {
         return postulantTrieService.creer(idpostulant, nom_postulant, prenom_postulant,numero_postulant, email,idtirage_id);
     }
 
+    @GetMapping("/readPostlantTrie")
+    public List<PostulantTrie> read(){
+
+        return postulantTrieService.lire();
+    }
 
     @GetMapping("/recupererPostulant/{libellet}")
-    public List<PostulantTrie> recupererPostulantTire(@PathVariable  String libellet){
+    public List<PostulantTrie> recupererPostulantTire(@PathVariable String libellet){
 
         return postulantTrieService.trouverPostulantTrieParIdtirage(tirageService.trouverTirageParLibelle(libellet).getId());
     }
