@@ -1,9 +1,7 @@
 package com.tirage.apifreetirage.controller;
 
-import com.tirage.apifreetirage.modele.Liste;
-import com.tirage.apifreetirage.modele.Postulant;
-import com.tirage.apifreetirage.modele.PostulantTrie;
-import com.tirage.apifreetirage.modele.Tirage;
+import com.tirage.apifreetirage.modele.*;
+import com.tirage.apifreetirage.repository.PostulantRepo;
 import com.tirage.apifreetirage.repository.TirageRepo;
 import com.tirage.apifreetirage.services.ListeService;
 import com.tirage.apifreetirage.services.PostulantService;
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/tirage")
 @AllArgsConstructor
 public class TirageController {
@@ -33,8 +31,12 @@ public class TirageController {
 
     private final TirageRepo tirageRepo;
 
+    private final PostulantRepo postulantRepo;
+
     @PostMapping("/createTirage/{libelle_liste}")
-    public List<PostulantTrie> create(@RequestBody Tirage tirage, @PathVariable String libelle_liste){
+    public Erreur create(@RequestBody Tirage tirage, @PathVariable String libelle_liste){
+
+        Erreur erreur = new Erreur();
 
         if (tirageService.trouverTirageParLibelle(tirage.getLibellet()) == null){//verifie si le tirage existe déjà
 
@@ -43,30 +45,40 @@ public class TirageController {
 
             long idliste = liste.getId_liste();//identifiant de la liste entrée par l'user
 
-            //retourne tous les postulants d'une liste donnée
-            List<Postulant> postuL = postulantService.TrouveridPostList(idliste);
+            if (postulantRepo.FINDIDPOSTLIST(idliste).size() >= tirage.getNbre()){
+                //retourne tous les postulants d'une liste donnée
+                List<Postulant> postuL = postulantService.TrouveridPostList(idliste);
 
-            listeService.mettreAjourListeNombreTirage(liste);
+                listeService.mettreAjourListeNombreTirage(liste);
 
-            //on crée le tirage et recuperer le tirage crée dans l'objet de type tirage ttt
-            Tirage ttt = tirageService.creer(tirage, liste);
+                //on crée le tirage et recuperer le tirage crée dans l'objet de type tirage ttt
+                Tirage ttt = tirageService.creer(tirage, liste);
 
-            List<Postulant> lp = tirageService.trie(postuL, tirage.getNbre());//recuperation des postulant trié dans lp
+                List<Postulant> lp = tirageService.trie(postuL, tirage.getNbre());//recuperation des postulant trié dans lp
 
-            //recuperation de l'id du tirage
-            long idTirage = ttt.getId();
+                //recuperation de l'id du tirage
+                long idTirage = ttt.getId();
 
-            //dans for dessous on parcours et enregistre la liste trié dans la table postulant trié
-            for (Postulant p : lp){//parcours de la liste postulants trié
+                //dans for dessous on parcours et enregistre la liste trié dans la table postulant trié
 
-                //enregistrement de la liste triée
-                postulantTrieService.creer(p.getIdpostulant(), p.getNom_postulant(), p.getPrenom_postulant(),p.getNumero_postulant(),p.getEmail(),idTirage);
+                for (Postulant p : lp){ //parcours de la liste postulants trié
+
+                    //enregistrement de la liste triée
+                    postulantTrieService.creer(p.getIdpostulant(), p.getNom_postulant(), p.getPrenom_postulant(),p.getNumero_postulant(),p.getEmail(),idTirage);
+                }
+
+                erreur.setContenuErreur("Tirage effectué avec succes");
+
+                //retourne les postulant triés
+                return erreur;
+            }else {
+                erreur.setContenuErreur("Veuillez choisir un nombre plus petit");
+                return erreur;
             }
-
-            //retourne les postulant triés
-            return postulantTrieService.trouverPostulantTrieParIdtirage(idTirage);
         }else{
-            return null;
+            erreur.setContenuErreur("Ce tirage existe déjà");
+            return  erreur;
+
         }
 
     }

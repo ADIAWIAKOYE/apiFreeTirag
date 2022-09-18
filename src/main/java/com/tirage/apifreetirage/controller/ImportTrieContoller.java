@@ -30,9 +30,12 @@ public class ImportTrieContoller {
 
 
     @PostMapping("/import/excel/{libelle}/{libelleT}/{nbre}")//il prend en parametre le libelle de la liste
-    public String importFormExcelT(@Param("file") MultipartFile file, Liste liste, @PathVariable String libelle, @PathVariable("libelleT") String libelleT, @PathVariable("nbre") Long nbre) {
+    public Erreur importFormExcelT(@Param("file") MultipartFile file, Liste liste, @PathVariable String libelle, @PathVariable("libelleT") String libelleT, @PathVariable("nbre") Long nbre) {
+
         System.out.println(nbre);
         System.out.println(libelleT);
+
+        Erreur erreur = new Erreur();
 
         Tirage tirage=new Tirage();
         tirage.setLibellet(libelleT);
@@ -47,7 +50,10 @@ public class ImportTrieContoller {
             List<Postulant> postulantListT = excelImporter.excelImport(file);
 
             if(postulantListT.size()==0){//verifie si la liste est vide
-                return "Fichier vide";
+
+                erreur.setContenuErreur("Fichier vide");
+
+                return erreur;
 
             }else{//si la liste n'est pas vide
                 liste.setDate_liste(new Date());//on modifie la date de la liste en lui donnant la date actuelle
@@ -94,12 +100,20 @@ public class ImportTrieContoller {
                             postulantTrieService.creer(p.getIdpostulant(), p.getNom_postulant(), p.getPrenom_postulant(), p.getNumero_postulant(), p.getEmail(), idTirage);
                         }
 
+                        erreur.setContenuErreur("Importation et le trie ecffectué avec succes");
+
                         //retourne les postulant triés
-                        return "Postulant trier avec succes";
+                        return erreur;
                     }
-                    return "liste importé avec succes";
+
+                    erreur.setContenuErreur("liste importé avec succes");
+
+                    return erreur;
                 } else {
-                    return "Cette liste existe déjà";
+
+                    erreur.setContenuErreur("Cette liste existe déjà");
+
+                    return erreur;
                 }
 
 
