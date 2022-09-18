@@ -32,6 +32,7 @@ public class ListeController {
 
     @GetMapping("/listes")
     public List<Liste> recupererListe(){
+
         return listeRepo.findAll();
     }
 
